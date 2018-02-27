@@ -14,16 +14,19 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppComponent } from './base/app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { ListCreatorComponent } from './lists/creator/list.creator.component';
 
 // Servicios
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './guards/auth.guard.service';
+import { UserService } from './services/users.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ListCreatorComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'my-app'}),
@@ -35,7 +38,8 @@ import { AuthGuardService } from './guards/auth.guard.service';
   ],
   providers: [
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
