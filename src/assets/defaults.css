@@ -2,3 +2,9 @@ body {
 	margin: 0px;
 	font-family: 'Open Sans', Roboto, Arial, Helvetica, sans-serif;
 }
+a {
+	color: inherit;
+}
+a:visited {
+	color: inherit;
+}

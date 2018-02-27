@@ -1,2 +1,10 @@
 @import './assets/defaults.css';
 @import './assets/colors.css';
+
+.large-padding {
+	padding: 10px 15px;
+}
+
+.main-nav a {
+	text-decoration: none;
+}
