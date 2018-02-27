@@ -6,13 +6,15 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/filter';
 import * as firebase from 'firebase/app';
 import { IUser } from '../structures/users';
+import { UserService } from './users.service';
 
 @Injectable()
 
 export class AuthService {
 
 	constructor(
-		private _afAut: AngularFireAuth
+		private _afAut: AngularFireAuth,
+		private _userService : UserService 
 	) {	}
 
 	getUser() : Observable<IUser> {
@@ -29,7 +31,13 @@ export class AuthService {
 	login() : Promise<void> {
 		return this._afAut.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
 			.then(result => {
-				console.log(result);
+				return this._userService
+					.add(
+						{
+							uid : result.user.uid, 
+							email : result.user.email
+						}
+					);
 			}).catch(console.log);
 	}
 }
