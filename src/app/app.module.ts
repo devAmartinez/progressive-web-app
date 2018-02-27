@@ -11,12 +11,13 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // Componentes propios
-import { AppComponent } from './app.component';
+import { AppComponent } from './base/app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 
 // Servicios
 import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './guards/auth.guard.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AuthService } from './services/auth.service';
     AngularFireAuthModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
