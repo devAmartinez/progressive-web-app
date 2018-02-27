@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TransferHttpCacheModule} from '@nguniversal/common';
-import { appRoutingProviders, routing } from './app.routing';
+import { appRoutes } from './app.routing';
 
 // Firebase config
 import { environment } from '../environments/environment';
@@ -15,7 +15,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,15 +22,13 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'my-app'}),
+    RouterModule.forRoot(appRoutes),
     TransferHttpCacheModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule,
-    routing
+    AngularFireAuthModule
   ],
-  providers: [
-    appRoutingProviders
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
