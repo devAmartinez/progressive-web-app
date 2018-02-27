@@ -13,12 +13,16 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 // Componentes propios
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
+// Servicios
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'my-app'}),
@@ -28,7 +32,9 @@ import { HomeComponent } from './home/home.component';
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
