@@ -13,10 +13,10 @@ export class LoginComponent implements OnInit {
 	) {	}
 
 	ngOnInit() {
-
+		this._auth.getUser().subscribe(console.log);
 	}
 
 	login() {
-		console.log()
+		this._auth.login().then(console.log);
 	}
 }
