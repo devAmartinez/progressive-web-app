@@ -16,6 +16,7 @@ import { AppComponent } from './base/app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ListCreatorComponent } from './lists/creator/list.creator.component';
+import { ListComponent } from './lists/list.component';
 
 // Servicios
 import { AuthService } from './services/auth.service';
@@ -28,7 +29,8 @@ import { ListService } from './services/lists.service';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ListCreatorComponent
+    ListCreatorComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'my-app'}),
