@@ -1,13 +1,16 @@
 import {Component, OnInit} from '@angular/core';
+import { ListService } from '../services/lists.service';
 
 @Component({
   selector: 'app-home',
-  template: `<h3>{{ message }}</h3>`
+  templateUrl: './home.component.html' 
 })
 export class HomeComponent implements OnInit {
   public message: string;
 
-  constructor() {}
+  constructor(
+  	private _listService : ListService
+  ) {}
 
   ngOnInit() {
     this.message = 'Hello';

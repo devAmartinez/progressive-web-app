@@ -1,3 +1,12 @@
+/*
+  red: #FF5349;
+  blue: #4F80E1; 
+  green: #18CDCA;
+  grey: #F0F0F1;
+  purple: #292C44;
+  black: #302D33;
+*/
+
 body {
 	background-color: #292C44;
 	color: #F0F0F1;
@@ -6,19 +15,16 @@ body {
 .blue {
 	background-color: #4F80E1;
 }
-.red {
-	background-color: #FF5349;	
+
+.card {
+	background-color: #F0F0F1;
+	color: #302D33;
 }
-.grey {
-	background-color: ;
-}
-.green {
-	background-color: #18CDCA;
+.card.with-badge .badge span {
+	color: #F0F0F1;
+	background-color: #FF5349;
 }
 
-.black {
-	background-color: #302D33;
-}
 .light-text {
 	color: #F0F0F1;
 }

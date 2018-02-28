@@ -12,7 +12,17 @@ import * as firebase from 'firebase/app';
 
 export class ListService {
 	public uid : string;
-	public lists : AngularFirestoreCollection<Ilist>;
+	/*
+		Creo la propiedad pública con una colección de la 
+		interfaz Ilist para manipular y posteriormente almacenar
+		los datos
+	*/
+	public listsCollection : AngularFirestoreCollection<Ilist>;
+	/* 
+	Creo la propiedad pública observable con la interfaz 
+	Ilist para obtener los registros de la colección
+	*/
+	public lists : Observable<Ilist[]>;
 
 	constructor(
 		private _afs : AngularFirestore,
@@ -27,18 +37,26 @@ export class ListService {
 
 
 	setCollection() {
-		this.lists = this._afs.collection('users')
-									.doc(this.uid)
-									.collection<Ilist>('lists');
+		this.listsCollection = this._afs.collection('users')
+														.doc(this.uid)
+														.collection<Ilist>('lists');
+		this.lists = this.listsCollection.snapshotChanges().map(actions => {
+			return actions.map(item => {
+				const data = item.payload.doc.data() as Ilist;
+				const id = item.payload.doc.id;
+
+				return { ... data, id };
+			});
+		});
 	}
 
 	add(list : Ilist) : Promise<any> {
-		if (!this.lists) throw Error('Asigna una colección antes de intentar añadir un nuevo documento');
+		if (!this.listsCollection) throw Error('Asigna una colección antes de intentar añadir un nuevo documento');
 		
 		const createdAt = firebase.firestore.FieldValue.serverTimestamp();
 
 		list.createdAt = createdAt;
 
-		return this.lists.add(list);
+		return this.listsCollection.add(list);
 	}
 }
