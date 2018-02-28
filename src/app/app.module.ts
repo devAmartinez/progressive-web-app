@@ -2,6 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TransferHttpCacheModule} from '@nguniversal/common';
+import { FormsModule } from '@angular/forms';
 import { appRoutes } from './app.routing';
 
 // Firebase config
@@ -20,6 +21,7 @@ import { ListCreatorComponent } from './lists/creator/list.creator.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './guards/auth.guard.service';
 import { UserService } from './services/users.service';
+import { ListService } from './services/lists.service';
 
 @NgModule({
   declarations: [
@@ -34,12 +36,14 @@ import { UserService } from './services/users.service';
     TransferHttpCacheModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule
   ],
   providers: [
     AuthService,
     AuthGuardService,
-    UserService
+    UserService,
+    ListService
   ],
   bootstrap: [AppComponent]
 })
