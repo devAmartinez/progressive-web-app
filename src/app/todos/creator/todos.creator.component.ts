@@ -10,10 +10,24 @@ import {
 } from '@angular/forms';
 import { TodoService } from '../../services/todos.service';
 import { ITodo, TStatus } from '../../structures/todos';
+import { 
+	trigger,
+	state,
+	style,
+	transition,
+	animate
+} from '@angular/animations';
 
 @Component({
 	selector: 'app-creator',
-	templateUrl: './todos.creator.component.html'
+	templateUrl: './todos.creator.component.html',
+	animations: [
+		trigger('openClose', [
+			state('collapsed, void', style({height:'0px'})),
+			state('expanded', style({height:'*'})),
+			transition('collapsed <=> expanded',[animate(300,style({height:'*'})), animate(300)])
+		])
+	]
 })
 
 export class TodosCreatorComponent implements OnInit {
@@ -21,6 +35,7 @@ export class TodosCreatorComponent implements OnInit {
 	@Input() id : string;
 	
 	public todosForm : FormGroup;
+	public formState : string;
 	
 	public todo : ITodo = { 
 		whatTodo: '',
@@ -30,7 +45,9 @@ export class TodosCreatorComponent implements OnInit {
 
 	constructor(
 		private _todoService : TodoService
-	) {}
+	) {
+		this.formState  = 'collapsed';
+	}
 
 	ngOnInit() {
 		this.todosForm = new FormGroup ({
@@ -39,9 +56,21 @@ export class TodosCreatorComponent implements OnInit {
 		});
 	}
 
-	save() {
+	save() : void {
 		this.todo.whatTodo = this.todosForm.value['whatTodo'];
 		this.todo.detail = this.todosForm.value['detail'];
 		this._todoService.add(this.id, this.todo);
+	}
+
+	label() : string {
+		return (this.formState == 'collapsed' ? 'Agregar nuevo pendiente' : 'Ocultar formulario');
+	}
+
+	icon() : string {
+		return (this.formState == 'collapsed' ? 'fa-plus' : 'fa-caret-up');
+	}
+
+	togleForm() : void {
+		this.formState = (this.formState == 'collapsed' ? 'expanded' : 'collapsed');
 	}
 }
