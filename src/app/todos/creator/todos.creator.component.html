@@ -1,4 +1,10 @@
-<div class="lateral-padding">
+<div class="text-right">
+	<button type="button" class="large-padding pointer no-background light-text" (click)="togleForm()">
+		{{label()}}
+		<i class="fa {{icon()}}"></i>
+	</button>
+</div>
+<div class="lateral-padding overflow-hidden" [@openClose]="formState">
 	<form [formGroup]="todosForm">
 		<input type="text" formControlName="whatTodo" placeholder="¿Qué vas a realizar?" required class="form-control">
 		<div class="danger" *ngIf="todosForm.controls['whatTodo'].errors && todosForm.controls['whatTodo'].errors.required
