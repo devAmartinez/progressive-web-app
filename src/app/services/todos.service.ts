@@ -48,4 +48,12 @@ export class TodoService {
 
 		return this._collection.add(todo);
 	}
+
+	update(listId : string, todo : ITodo) : Promise<void> {
+		if(!this._collection || this._listId != listId) this.setCollection(listId);
+
+		return this._collection.doc(todo.id).update({
+			status: todo.status
+		});
+	}
 }
