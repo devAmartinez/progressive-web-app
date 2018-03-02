@@ -110,3 +110,16 @@ button.no-background {
 	justify-content: center;
 	width: 3em;
 }
+.todo-card {
+	position: relative;
+}
+.todo-card::after {
+	color: #18CDCA;
+	content: '\f14a';
+	font-family: FontAwesome;
+	font-weight: bold;
+	position: absolute;
+	right: -2em;
+	top: 50%;
+	z-index: -1;
+}
