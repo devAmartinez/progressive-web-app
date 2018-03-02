@@ -28,3 +28,6 @@ body {
 .light-text {
 	color: #F0F0F1;
 }
+.danger {
+	color: #FF5349;
+}

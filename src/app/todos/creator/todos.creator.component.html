@@ -1,0 +1,21 @@
+<div class="lateral-padding">
+	<form [formGroup]="todosForm">
+		<input type="text" formControlName="whatTodo" placeholder="¿Qué vas a realizar?" required class="form-control">
+		<div class="danger" *ngIf="todosForm.controls['whatTodo'].errors && todosForm.controls['whatTodo'].errors.required
+		 && (todosForm.controls['whatTodo'].dirty || todosForm.controls['whatTodo'].touched)">
+    	Debes ingresar una descripción     	
+		</div>
+		<div class="danger" *ngIf="todosForm.controls['whatTodo'].errors && todosForm.controls['whatTodo'].errors.minlength">
+    	La descripción debe ser de al menos <strong>3 caracteres</strong>	
+		</div>
+
+		<textarea placeholder="Información adicional (opcional)" class="form-control" formControlName="detail">			
+		</textarea>
+		<div class="top-space">
+			<button class="btn blue light-text full-width" (click)="save()">
+				<i class="fa fa-save"></i>
+				Guardar
+			</button>
+		</div>
+	</form>	
+</div>

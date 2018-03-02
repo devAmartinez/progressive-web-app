@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'app-list',
@@ -6,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ListComponent implements OnInit {
+	public listId : string;
 
-	constructor() {}
-	
-	ngOnInit() {}
+	constructor(
+		private _route : ActivatedRoute
+	) {}
+
+	ngOnInit() {
+		this.listId = this._route.snapshot.params.id;
+	}
 
 }
