@@ -1,10 +1,19 @@
-<div class="large-padding">
-	<a routerLink="/list/{{list.id}}" *ngFor="let list of _listService.lists | async">
-		<article class="card block large-padding top-space with-badge">
-			<h4>{{list.title}}</h4>
-			<div class="badge">
-				<span>0</span>
-			</div>
-		</article>
-	</a>
+<!-- 
+	el ?, se conoce como safe navigations,
+	permite que se ejecute length cuando ya no sea undefined,
+	o null, porque el servicio mientras carga va a estar en
+	los estados>> undefined y null, hasta que carga
+	completamente y tiene valor
+-->
+<div class="large-padding" [@enterState]="(_listService.lists | async)?.length">
+	<div *ngFor="let list of _listService.lists | async">
+		<a routerLink="/list/{{list.id}}">
+			<article class="card block large-padding top-space with-badge">
+				<h4>{{list.title}}</h4>
+				<div class="badge">
+					<span>0</span>
+				</div>
+			</article>
+		</a>
+	</div>	
 </div>
