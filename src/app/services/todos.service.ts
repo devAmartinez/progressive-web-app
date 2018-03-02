@@ -21,7 +21,11 @@ export class TodoService {
 
 	setCollection(listId : string) {
 		this._listId = listId;
-		this._collection = this._afs.collection('lists').doc(listId).collection('todos');
+		this._collection = this._afs.collection('lists')
+												.doc(listId)
+												.collection('todos', (ref) => {
+													return ref.where('status','==',0);
+												});
 
 		this._ref = this._collection.snapshotChanges();
 	}
