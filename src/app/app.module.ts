@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { ListCreatorComponent } from './lists/creator/list.creator.component';
 import { ListComponent } from './lists/list.component';
 import { TodosCreatorComponent } from './todos/creator/todos.creator.component';
+import { CardComponent } from './todos/card/todo.card.component';
 
 // Servicios
 import { AuthService } from './services/auth.service';
@@ -33,7 +34,8 @@ import { TodoService } from './services/todos.service';
     LoginComponent,
     ListCreatorComponent,
     ListComponent,
-    TodosCreatorComponent
+    TodosCreatorComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'my-app'}),

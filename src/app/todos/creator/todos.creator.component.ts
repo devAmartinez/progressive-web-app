@@ -24,6 +24,7 @@ export class TodosCreatorComponent implements OnInit {
 	
 	public todo : ITodo = { 
 		whatTodo: '',
+		detail: '',
 		status: TStatus.Created
 	};
 
@@ -40,6 +41,7 @@ export class TodosCreatorComponent implements OnInit {
 
 	save() {
 		this.todo.whatTodo = this.todosForm.value['whatTodo'];
+		this.todo.detail = this.todosForm.value['detail'];
 		this._todoService.add(this.id, this.todo);
 	}
 }
