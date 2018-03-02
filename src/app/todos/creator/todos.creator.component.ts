@@ -32,7 +32,7 @@ import {
 
 export class TodosCreatorComponent implements OnInit {
 	
-	@Input() id : string;
+	@Input() listId : string;
 	
 	public todosForm : FormGroup;
 	public formState : string;
@@ -59,7 +59,7 @@ export class TodosCreatorComponent implements OnInit {
 	save() : void {
 		this.todo.whatTodo = this.todosForm.value['whatTodo'];
 		this.todo.detail = this.todosForm.value['detail'];
-		this._todoService.add(this.id, this.todo);
+		this._todoService.add(this.listId, this.todo);
 	}
 
 	label() : string {
