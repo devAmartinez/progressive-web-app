@@ -27,12 +27,17 @@
 .top-space {
 	margin-top: 1em;
 }
-
+.overflow-hidden {
+	overflow: hidden;
+}
 /* 
 	Transformación de textos
 */
 .small-font {
 	font-size: 0.8rem;
+}
+.text-right {
+	text-align: right;
 }
 
 /* 
@@ -60,6 +65,17 @@
 	outline: 0;
 	padding: 1em 1.5em;
 	text-transform: uppercase;
+}
+.no-background {
+	background: transparent;
+}
+button.no-background {
+	border: 0;
+	font-size: 1em;
+	outline: 0;	
+}
+.pointer {
+	cursor: pointer;
 }
 
 /*
