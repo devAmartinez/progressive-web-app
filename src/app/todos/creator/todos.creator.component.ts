@@ -59,7 +59,16 @@ export class TodosCreatorComponent implements OnInit {
 	save() : void {
 		this.todo.whatTodo = this.todosForm.value['whatTodo'];
 		this.todo.detail = this.todosForm.value['detail'];
-		this._todoService.add(this.listId, this.todo);
+		this._todoService.add(this.listId, this.todo)
+			.then((r) => {
+				this.todo = {
+					whatTodo : '',
+					detail : '',
+					status : TStatus.Created
+				}
+				this.todosForm.reset();
+			});
+
 	}
 
 	label() : string {
