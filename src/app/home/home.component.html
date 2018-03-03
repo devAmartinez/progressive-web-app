@@ -5,8 +5,8 @@
 	los estados>> undefined y null, hasta que carga
 	completamente y tiene valor
 -->
-<div class="large-padding" [@enterState]="(_listService.lists | async)?.length">
-	<div *ngFor="let list of _listService.lists | async">
+<div class="large-padding" [@enterState]="(listService.lists | async)?.length">
+	<div *ngFor="let list of listService.lists | async">
 		<a routerLink="/list/{{list.id}}">
 			<article class="card block large-padding top-space with-badge">
 				<h4>{{list.title}}</h4>
