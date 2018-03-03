@@ -27,7 +27,7 @@ export class TodoService {
 													return ref.where('status','==',0);
 												});
 
-		this._ref = this._collection.snapshotChanges();
+		this._ref = this._collection.snapshotChanges().share();
 	}
 
 	getFromList(listId : string) : Observable<ITodo[]> {
