@@ -2,8 +2,17 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TransferHttpCacheModule} from '@nguniversal/common';
+
+// Para funcionamiento de los formularios
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// DatePicker
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+
+// Requerido para las animaciones en angular
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Routing del sitio
 import { appRoutes } from './app.routing';
 
 // Firebase config
@@ -47,7 +56,9 @@ import { TodoService } from './services/todos.service';
     AngularFireAuthModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   providers: [
     AuthService,
