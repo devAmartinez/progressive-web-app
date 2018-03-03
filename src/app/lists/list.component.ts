@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { TodoService } from '../services/todos.service';
 import { enterAnimation } from '../animations/animations';
 
+
 @Component({
 	selector: 'app-list',
 	templateUrl: './list.component.html',
@@ -16,6 +17,7 @@ export class ListComponent implements OnInit {
 	public listId : string;
 	public todos : Observable<ITodo[]>;
 
+	trackTodoObjects = (id,obj) => obj.id;
 
 	constructor(
 		private _route : ActivatedRoute,
@@ -24,7 +26,7 @@ export class ListComponent implements OnInit {
 
 	ngOnInit() {
 		this.listId = this._route.snapshot.params.id;
-
+		//console.log(enterAnimation);
 		this.todos = this._todoService.getFromList(this.listId);
 	}
 
