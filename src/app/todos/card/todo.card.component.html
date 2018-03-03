@@ -7,5 +7,9 @@
 	[@pressAnimation]="press" 
 	(swipeLeft)="completed()">
 	<h4>{{todo.whatTodo}}</h4>
+	<p *ngIf="todo.deadLine">
+		<i class="fa fa-calendar"></i>
+		{{moment(todo.deadLine).fromNow()}}
+	</p>
 	<p *ngIf="todo.detail">{{todo.detail}}</p>
 </article>

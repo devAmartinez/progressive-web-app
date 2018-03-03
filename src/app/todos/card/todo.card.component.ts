@@ -12,6 +12,9 @@ import {
 	animate
 } from '@angular/animations';
 import { TodoService } from '../../services/todos.service';
+import * as moment from 'moment';
+
+moment.locale('es');
 
 @Component({
 	selector: 'app-card',
@@ -57,6 +60,7 @@ export class CardComponent implements OnInit {
 	@Input() listId : string;
 
 	public press : string;
+	public moment : any = moment;
 
 	constructor(
 		private _todoService : TodoService
