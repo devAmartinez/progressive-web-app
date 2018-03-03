@@ -17,6 +17,19 @@
 
 		<textarea placeholder="Información adicional (opcional)" class="form-control" formControlName="detail">			
 		</textarea>
+
+		<div class="date-time-picker">
+			<input 
+				type="text" 
+				class="form-control" 
+				placeholder="Fecha límite (opcional)"
+				formControlName="deadLine"
+				[owlDateTime]="dt" 
+				[owlDateTimeTrigger]="dt">
+
+			<owl-date-time #dt></owl-date-time>
+		</div>
+
 		<div class="top-space">
 			<button class="btn blue light-text full-width" (click)="save()">
 				<i class="fa fa-save"></i>
