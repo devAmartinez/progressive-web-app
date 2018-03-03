@@ -3,7 +3,7 @@ import {
 	OnInit,
 	Input
 } from '@angular/core';
-import { ITodo } from '../../structures/todos';
+import { ITodo, TStatus } from '../../structures/todos';
 import {
 	trigger,
 	state,
@@ -11,11 +11,29 @@ import {
 	transition,
 	animate
 } from '@angular/animations';
+import { TodoService } from '../../services/todos.service';
 
 @Component({
 	selector: 'app-card',
 	templateUrl: './todo.card.component.html',
 	animations: [
+		trigger('statusAnimation', [
+			state('0, void', style({
+				transform: 'translateX(0)',
+				opacity: 1
+			})),
+			state('1, void', style({
+				transform: 'translateX(-100%)',
+				opacity: 0
+			})),
+			transition('0 <=> 1', [
+				animate(200, style({
+					transform: 'translateX(0)',
+					opacity: 1
+				})),
+				animate(200)
+			])
+		]),
 		trigger('pressAnimation', [
 			state('up, void', style({
 				transform: 'translateX(0)'
@@ -36,16 +54,25 @@ import {
 export class CardComponent implements OnInit {
 
 	@Input() todo : ITodo;
+	@Input() listId : string;
+
 	public press : string;
 
-	constructor() {
+	constructor(
+		private _todoService : TodoService
+	) {
 		this.press = 'up';
 	}
 
 	ngOnInit() {}
 
 	completed() {
-		console.log('swiped');
+		this.todo.status = TStatus.Completed;
+		setTimeout(() => {
+			this._todoService.update(this.listId,this.todo),
+			300
+		});
+		
 	}
 
 }
