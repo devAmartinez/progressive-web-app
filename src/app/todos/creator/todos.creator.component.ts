@@ -52,13 +52,15 @@ export class TodosCreatorComponent implements OnInit {
 	ngOnInit() {
 		this.todosForm = new FormGroup ({
 			whatTodo : new FormControl('', [Validators.required, Validators.minLength(3)]),
-			detail : new FormControl('')
+			detail : new FormControl(''),
+			deadLine : new FormControl('')
 		});
 	}
 
 	save() : void {
 		this.todo.whatTodo = this.todosForm.value['whatTodo'];
 		this.todo.detail = this.todosForm.value['detail'];
+		this.todo.deadLine = this.todosForm.value['deadLine'];
 		this._todoService.add(this.listId, this.todo)
 			.then((r) => {
 				this.todo = {
