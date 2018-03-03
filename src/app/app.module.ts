@@ -3,6 +3,9 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TransferHttpCacheModule} from '@nguniversal/common';
 
+// Cargar módulo de service worker
+import { ServiceWorkerModule } from '@angular/service-worker';
+
 // Para funcionamiento de los formularios
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -58,7 +61,8 @@ import { TodoService } from './services/todos.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : []
   ],
   providers: [
     AuthService,
