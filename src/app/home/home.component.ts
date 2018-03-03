@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ListService } from '../services/lists.service';
 import { enterAnimation } from '../animations/animations';
 
@@ -8,13 +8,11 @@ import { enterAnimation } from '../animations/animations';
   animations: [enterAnimation]
 })
 export class HomeComponent implements OnInit {
-  public message: string;
+
 
   constructor(
   	private _listService : ListService
   ) {}
 
-  ngOnInit() {
-    this.message = 'Hello';
-  }
+  ngOnInit() {}
 }
