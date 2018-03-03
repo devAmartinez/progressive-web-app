@@ -1,6 +1,8 @@
 <app-creator [listId]="listId"></app-creator>
-<app-card 
-	*ngFor="let todo of todos | async"
-	[todo]="todo"
-	[listId]="listId">
-</app-card>
+<div [@enterState]="(todos | async)?.length">
+	<app-card 
+		*ngFor="let todo of todos | async;"
+		[todo]="todo"
+		[listId]="listId">
+	</app-card>	
+</div>
