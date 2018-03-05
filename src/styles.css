@@ -31,6 +31,20 @@
 .overflow-hidden {
 	overflow: hidden;
 }
+.relative {
+	position: relative;
+}
+.small-padding {
+	padding: 8px;
+}
+.notification-window {
+	font-size: 0.7em;
+	position: absolute;
+	right: 0px;
+	top: 40px;
+	width: 300px;
+	z-index: 100;
+}
 /* 
 	Transformación de textos
 */
