@@ -39,6 +39,7 @@ import { AuthGuardService } from './guards/auth.guard.service';
 import { UserService } from './services/users.service';
 import { ListService } from './services/lists.service';
 import { TodoService } from './services/todos.service';
+import { PushNotificationService } from './services/push.notifications.service';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { TodoService } from './services/todos.service';
     AuthGuardService,
     UserService,
     ListService,
-    TodoService
+    TodoService,
+    PushNotificationService
   ],
   bootstrap: [AppComponent]
 })
