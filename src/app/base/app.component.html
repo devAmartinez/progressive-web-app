@@ -3,16 +3,21 @@
 		<span class="nav-title">Progressive web-App</span>
 	</a>
 
-	<div class="notification-window card small-padding">
-		<div *ngIf="token; else activateNotifications">
+	<div class="notification-window card small-padding" *ngIf="showPanel">
+		<div *ngIf="!!(token | async); else activateNotifications">
 			<p>¿Te gustaría desactivar las notificaciones push?</p>
-			<button type="button" class="blue light-text btn pointer">Desactivar</button>
+			<button 
+				type="button" 
+				class="blue opacity light-text btn pointer"
+				(click)="cancelPushPermision()">
+				Desactivar
+			</button>
 		</div>
 		<ng-template #activateNotifications>
 			<p>¿Te gustaría activar las notificaciones push?</p>
 			<button 
 				type="button" 
-				class="blue light-text btn pointer"
+				class="blue opacity light-text btn pointer"
 				(click)="requestPushPermision()">
 				Activar
 			</button>
@@ -20,8 +25,8 @@
 	</div>
 
 	<div class="float-right" *ngIf="afAuth.authState | async">
-		<a href="#">
-			<i class="fa fa-bell"></i>
+		<a (click)="toggleNotificationWindow()">
+			<i class="fa" [ngClass]="{'fa-bell danger': !!(token | async), 'fa-bell-o': !(token | async)}"></i>
 		</a>
 		<a routerLink="/">
 			<i class="fa fa-list"></i>

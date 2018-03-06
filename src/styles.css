@@ -89,6 +89,9 @@ button.no-background {
 	font-size: 1em;
 	outline: 0;	
 }
+button.opacity:active {
+	opacity: 0.8;
+}
 .pointer {
 	cursor: pointer;
 }
