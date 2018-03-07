@@ -40,3 +40,8 @@
 	</div>
 </nav>
 <router-outlet></router-outlet>
+<div 
+	class="push-message"
+	[ngClass]="{'visible': !!(pushService.notification | async)}">
+	{{(pushService.notification | async)?.notification.body}}
+</div>
