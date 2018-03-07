@@ -10,5 +10,17 @@ if (environment.production) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  platformBrowserDynamic().bootstrapModule(AppModule);
+  platformBrowserDynamic().bootstrapModule(AppModule)
+  	.then(() => {
+  		/*
+  		  Al parecer la service worker de firebase para las notificaciones
+				tiene conflictos con la service worker de angular
+				para solucionarlo, una vez la aplicación se registre en el navegador
+				y la aplicación se encuentre en modo producción,se
+				procede a registrar la service worker de angular
+  		*/
+  		if ('serviceWorker' in navigator && environment.production) {
+  			navigator.serviceWorker.register('/ngsw-worker.js');
+  		}
+  	});
 });
