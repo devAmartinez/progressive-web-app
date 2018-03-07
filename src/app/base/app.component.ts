@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { PushNotificationService } from '../services/push.notifications.service';
+import { IUser } from '../structures/users';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,8 @@ export class AppComponent implements OnInit{
 
 	ngOnInit() {
 		this.token = this.pushService.getSubscription();
+		this.pushService.watchMessages();
+		this.pushService.refreshToken();
 	}
 
 	requestPushPermision() {
