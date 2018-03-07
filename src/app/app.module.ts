@@ -56,7 +56,7 @@ import { PushNotificationService } from './services/push.notifications.service';
     RouterModule.forRoot(appRoutes),
     TransferHttpCacheModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     FormsModule,
     ReactiveFormsModule,
